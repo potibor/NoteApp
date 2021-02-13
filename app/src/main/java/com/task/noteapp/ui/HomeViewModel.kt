@@ -1,10 +1,12 @@
 package com.task.noteapp.ui
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.task.noteapp.data.model.NoteModel
 import com.task.noteapp.domain.FetchNotesUseCase
+import com.task.noteapp.util.Event
 import com.task.noteapp.util.Failure
 import com.task.noteapp.util.UseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,6 +16,8 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     fetchNotesUseCase: FetchNotesUseCase
 ) : ViewModel() {
+
+    val navigation = MutableLiveData<Event<Boolean>>()
 
     init {
         fetchNotesUseCase.invoke(viewModelScope, UseCase.None) {
@@ -27,5 +31,9 @@ class HomeViewModel @Inject constructor(
 
     private fun submitList(noteList: List<NoteModel>) {
         Log.d("successsssss", noteList.toString())
+    }
+
+    fun onAddButtonClick() {
+        navigation.value = Event(true)
     }
 }

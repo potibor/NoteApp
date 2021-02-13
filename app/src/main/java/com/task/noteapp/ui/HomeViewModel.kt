@@ -1,7 +1,31 @@
 package com.task.noteapp.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.task.noteapp.data.model.NoteModel
+import com.task.noteapp.domain.FetchNotesUseCase
+import com.task.noteapp.util.Failure
+import com.task.noteapp.util.UseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    fetchNotesUseCase: FetchNotesUseCase
+) : ViewModel() {
+
+    init {
+        fetchNotesUseCase.invoke(viewModelScope, UseCase.None) {
+            it.either(::handleError, ::submitList)
+        }
+    }
+
+    private fun handleError(failure: Failure) {
+        Log.d("failllll", failure.toString())
+    }
+
+    private fun submitList(noteList: List<NoteModel>) {
+        Log.d("successsssss", noteList.toString())
+    }
 }

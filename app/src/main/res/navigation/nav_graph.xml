@@ -7,7 +7,22 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.task.noteapp.ui.HomeFragment"
+        android:name="com.task.noteapp.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.task.noteapp.ui.addnote.AddNoteFragment"
+        android:label="fragment_add_note"
+        tools:layout="@layout/fragment_add_note" />
+
+    <action
+        android:id="@+id/to_addNoteFragment"
+        app:destination="@id/addNoteFragment"
+        app:enterAnim="@anim/enter"
+        app:exitAnim="@anim/exit"
+        app:popEnterAnim="@anim/pop_enter"
+        app:popExitAnim="@anim/pop_exit" />
+
 </navigation>

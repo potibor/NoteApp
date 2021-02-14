@@ -14,5 +14,15 @@ class NotesRepository @Inject constructor(
         return localDataSource.getAll()
     }
 
+    suspend fun addNote(title: String?, description: String?, imageUrl: String?) {
+        return localDataSource.add(
+            NoteModel(
+                title = title,
+                description = description,
+                image = imageUrl
+            )
+        )
+    }
+
 
 }

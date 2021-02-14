@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.addnote.AddNoteFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.task.noteapp.ui.addnote.AddNoteViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/add_note_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="@dimen/margin_xxl"
+                android:scaleType="fitCenter"
+                android:src="@drawable/background_default_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_new_title_text_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_xxl"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:layout_marginBottom="@dimen/margin_xxl"
+                android:hint="@string/add_note_title"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/purple_500"
+                app:hintTextColor="@color/purple_500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_note_image">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/add_new_title_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_bordered_view"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLength="@integer/edit_text_title_length"
+                    android:paddingStart="@dimen/margin_large"
+                    android:text="@={viewModel.title}"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/add_new_description_text_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_xxl"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:layout_marginBottom="@dimen/margin_xxl"
+                android:hint="@string/add_note_description"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/purple_500"
+                app:hintTextColor="@color/purple_500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_new_title_text_input_layout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/add_new_description_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background_bordered_view"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:maxLength="@integer/edit_text_description_length"
+                    android:paddingStart="@dimen/margin_large"
+                    android:text="@={viewModel.description}"
+                    android:textColor="@color/purple_500"
+                    android:textSize="16sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:onClick="@{() -> viewModel.addNote()}"
+            android:text="@string/text_add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

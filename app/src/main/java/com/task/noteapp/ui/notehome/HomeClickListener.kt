@@ -1,4 +1,4 @@
-package com.task.noteapp.ui.home
+package com.task.noteapp.ui.notehome
 
 import com.task.noteapp.data.model.NoteModel
 

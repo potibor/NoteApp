@@ -1,4 +1,4 @@
-package com.task.noteapp.ui.addnote
+package com.task.noteapp.ui.noteadd
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

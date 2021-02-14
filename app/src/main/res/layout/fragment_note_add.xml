@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.addnote.AddNoteFragment">
+    tools:context=".ui.noteadd.AddNoteFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.task.noteapp.ui.addnote.AddNoteViewModel" />
+            type="com.task.noteapp.ui.noteadd.AddNoteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

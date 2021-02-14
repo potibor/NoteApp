@@ -11,7 +11,7 @@
 
         <variable
             name="listener"
-            type="com.task.noteapp.ui.home.HomeClickListener" />
+            type="com.task.noteapp.ui.notehome.HomeClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView

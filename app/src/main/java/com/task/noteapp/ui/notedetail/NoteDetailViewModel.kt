@@ -15,7 +15,7 @@ class NoteDetailViewModel @Inject constructor(
     private val noteDetailUseCase: NoteDetailUseCase
 ) : ViewModel() {
 
-    private val noteModel = MutableLiveData<NoteModel>()
+    val noteModel = MutableLiveData<NoteModel>()
 
     fun getNoteDetail(noteId: Int) {
         noteDetailUseCase.invoke(viewModelScope, NoteDetailUseCase.Params(id = noteId)) {
@@ -29,5 +29,13 @@ class NoteDetailViewModel @Inject constructor(
 
     private fun postModel(response: NoteModel) {
         noteModel.value = response
+    }
+
+    fun editNote() {
+        // TODO: will be updated
+    }
+
+    fun deleteNote() {
+        // TODO: will be updated
     }
 }

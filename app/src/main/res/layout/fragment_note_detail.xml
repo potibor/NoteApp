@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.notedetail.NoteDetailFragment">
 
@@ -15,6 +16,61 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/add_note_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_margin="@dimen/margin_xxl"
+            android:scaleType="fitCenter"
+            app:imageFromUrl="@{viewModel.noteModel.image}"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_model_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_xxl"
+            android:gravity="center"
+            android:text="@{viewModel.noteModel.title}"
+            android:textColor="@color/purple_500"
+            android:textSize="30sp"
+            app:layout_constraintTop_toBottomOf="@+id/add_note_image"
+            tools:text="@string/app_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_model_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_xxl"
+            android:text="@{viewModel.noteModel.description}"
+            android:textColor="@color/purple_500"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@+id/text_model_title"
+            tools:text="@string/app_name" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_edit"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/margin_large"
+            android:onClick="@{() -> viewModel.editNote()}"
+            android:text="@string/text_edit"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_delete"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_delete"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_margin="@dimen/margin_large"
+            android:onClick="@{() -> viewModel.deleteNote()}"
+            android:text="@string/text_delete"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_edit" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

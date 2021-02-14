@@ -21,7 +21,7 @@ class NoteDetailFragment : Fragment() {
 
     private val viewModel by viewModels<NoteDetailViewModel>()
     private lateinit var binding: FragmentNoteDetailBinding
-    val args by navArgs<NoteDetailFragmentArgs>()
+    private val args by navArgs<NoteDetailFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +34,7 @@ class NoteDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentNoteDetailBinding.bind(view)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         viewModel.getNoteDetail(args.argModelId)
         observeNavigation()

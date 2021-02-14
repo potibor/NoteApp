@@ -11,7 +11,7 @@ class NotesRepository @Inject constructor(
     * we can map response, if necessary
     */
     suspend fun fetchNotes(): List<NoteModel> {
-        var response = localDataSource.getAll()
+        val response = localDataSource.getAll()
         return response.filter {
             !it.title.isNullOrEmpty()
         }

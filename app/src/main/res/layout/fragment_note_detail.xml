@@ -19,9 +19,9 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/add_note_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_xxl"
-            android:scaleType="fitCenter"
+            android:scaleType="fitXY"
             app:imageFromUrl="@{viewModel.noteModel.image}"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_xxl"
             android:gravity="center"
-            android:text="@{viewModel.noteModel.title}"
+            android:text="@={viewModel.noteModel.title}"
             android:textColor="@color/purple_500"
             android:textSize="30sp"
             app:layout_constraintTop_toBottomOf="@+id/add_note_image"
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_xxl"
-            android:text="@{viewModel.noteModel.description}"
+            android:text="@={viewModel.noteModel.description}"
             android:textColor="@color/purple_500"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@+id/text_model_title"

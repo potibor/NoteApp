@@ -9,6 +9,9 @@ package com.task.noteapp.util.functional
  * @see Left
  * @see Right
  */
+
+// Credits to Alex Hart -> https://proandroiddev.com/kotlins-nothing-type-946de7d464fb
+// Composes 2 functions
 sealed class Either<out L, out R> {
     /** * Represents the left side of [Either] class which by convention is a "Failure". */
     data class Left<out L>(val a: L) : Either<L, Nothing>()
@@ -33,39 +36,4 @@ sealed class Either<out L, out R> {
             is Left -> fnL(a)
             is Right -> fnR()
         }
-
-    fun <T> transform(fnR: (R) -> T): Either<L, T> {
-        return when (this) {
-            is Left -> this
-            is Right -> Right(fnR(b))
-        }
-    }
-
-    fun ifRight(block: (R) -> Unit) {
-        when (this) {
-            is Right -> block(b)
-            else -> return
-        }
-    }
-
-    fun ifLeft(block: (L) -> Unit) {
-        when (this) {
-            is Left -> block(a)
-            else -> return
-        }
-    }
 }
-
-// Credits to Alex Hart -> https://proandroiddev.com/kotlins-nothing-type-946de7d464fb
-// Composes 2 functions
-fun <A, B, C> ((A) -> B).c(f: (B) -> C): (A) -> C = {
-    f(this(it))
-}
-
-fun <T, L, R> Either<L, R>.flatMap(fn: (R) -> Either<L, T>): Either<L, T> =
-    when (this) {
-        is Either.Left -> Either.Left(a)
-        is Either.Right -> fn(b)
-    }
-
-fun <T, L, R> Either<L, R>.map(fn: (R) -> (T)): Either<L, T> = this.flatMap(fn.c(::right))

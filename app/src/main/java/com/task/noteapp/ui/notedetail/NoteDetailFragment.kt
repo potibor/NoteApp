@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.task.noteapp.R
 import com.task.noteapp.databinding.FragmentNoteDetailBinding
@@ -35,6 +36,15 @@ class NoteDetailFragment : Fragment() {
         binding.viewModel = viewModel
 
         viewModel.getNoteDetail(args.argModelId)
+        observeNavigation()
+    }
+
+    private fun observeNavigation() {
+        viewModel.navigateBackLiveData.observe(viewLifecycleOwner) { event ->
+            event.getContentIfNotHandled()?.let {
+                if (it) findNavController().popBackStack()
+            }
+        }
     }
 
 }

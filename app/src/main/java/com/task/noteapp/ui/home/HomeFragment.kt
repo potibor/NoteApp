@@ -30,6 +30,7 @@ class HomeFragment : Fragment() {
         val binding = FragmentHomeBinding.bind(view)
         binding.viewModel = viewModel
 
+        viewModel.fetchNotes()
         observeNavigation()
     }
 

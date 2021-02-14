@@ -14,16 +14,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    fetchNotesUseCase: FetchNotesUseCase
+    private val fetchNotesUseCase: FetchNotesUseCase
 ) : ViewModel() {
 
     val navigation = MutableLiveData<Event<Boolean>>()
-
-    init {
-        fetchNotesUseCase.invoke(viewModelScope, UseCase.None) {
-            it.either(::handleError, ::submitList)
-        }
-    }
 
     private fun handleError(failure: Failure) {
         Log.d("failllll", failure.toString())
@@ -35,5 +29,11 @@ class HomeViewModel @Inject constructor(
 
     fun onAddButtonClick() {
         navigation.value = Event(true)
+    }
+
+    fun fetchNotes() {
+        fetchNotesUseCase.invoke(viewModelScope, UseCase.None) {
+            it.either(::handleError, ::submitList)
+        }
     }
 }

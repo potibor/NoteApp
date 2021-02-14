@@ -12,8 +12,8 @@ interface NotesDao {
     @Query("UPDATE note SET title=:title, description=:description, image=:image, isUpdated=:isUpdated WHERE id=:id")
     suspend fun updateNote(
         id: Int,
-        title: String,
-        description: String,
+        title: String?,
+        description: String?,
         image: String?,
         isUpdated: Boolean
     )

@@ -8,7 +8,7 @@ import com.task.noteapp.data.database.dao.NotesDao
 
 @Database(
     entities = [NoteEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class NotesDatabase : RoomDatabase() {

@@ -2,17 +2,17 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.notehome.HomeFragment">
 
     <data>
 
         <variable
             name="viewModel"
-            type="com.task.noteapp.ui.home.HomeViewModel" />
+            type="com.task.noteapp.ui.notehome.HomeViewModel" />
 
         <variable
             name="adapter"
-            type="com.task.noteapp.ui.home.HomeAdapter" />
+            type="com.task.noteapp.ui.notehome.HomeAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

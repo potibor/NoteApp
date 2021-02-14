@@ -1,6 +1,5 @@
-package com.task.noteapp.ui.home
+package com.task.noteapp.ui.notehome
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val fetchNotesUseCase: FetchNotesUseCase
-) : ViewModel(), HomeClickListener {
+) : ViewModel() {
 
     val navigation = MutableLiveData<Event<Boolean>>()
 
@@ -33,16 +32,10 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun submitList(noteList: List<NoteModel>) {
-        noteListLiveData.value = Event(mutableListOf<NoteModel>().apply {
-            addAll(noteList)
-        })
+        noteListLiveData.value = Event(noteList)
     }
 
     fun onAddButtonClick() {
         navigation.value = Event(true)
-    }
-
-    override fun noteItemClicked(model: NoteModel) {
-        TODO("Not yet implemented")
     }
 }

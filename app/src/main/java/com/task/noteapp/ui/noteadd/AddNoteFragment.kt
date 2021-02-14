@@ -1,4 +1,4 @@
-package com.task.noteapp.ui.addnote
+package com.task.noteapp.ui.noteadd
 
 import android.content.Intent
 import android.net.Uri
@@ -13,25 +13,25 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.task.noteapp.R
-import com.task.noteapp.databinding.FragmentAddNoteBinding
+import com.task.noteapp.databinding.FragmentNoteAddBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AddNoteFragment : Fragment() {
 
     private val viewModel by viewModels<AddNoteViewModel>()
-    private lateinit var binding: FragmentAddNoteBinding
+    private lateinit var binding: FragmentNoteAddBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_add_note, container, false)
+        return inflater.inflate(R.layout.fragment_note_add, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentAddNoteBinding.bind(view)
+        binding = FragmentNoteAddBinding.bind(view)
         binding.viewModel = viewModel
 
         binding.addNoteImage.setOnClickListener {

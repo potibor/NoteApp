@@ -7,15 +7,27 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.task.noteapp.ui.home.HomeFragment"
+        android:name="com.task.noteapp.ui.notehome.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_note_home" />
 
     <fragment
         android:id="@+id/addNoteFragment"
-        android:name="com.task.noteapp.ui.addnote.AddNoteFragment"
+        android:name="com.task.noteapp.ui.noteadd.AddNoteFragment"
         android:label="fragment_add_note"
-        tools:layout="@layout/fragment_add_note" />
+        tools:layout="@layout/fragment_note_add" />
+
+    <fragment
+        android:id="@+id/noteDetailFragment"
+        android:name="com.task.noteapp.ui.notedetail.NoteDetailFragment"
+        android:label="fragment_note_detail"
+        tools:layout="@layout/fragment_note_detail" >
+
+        <argument
+            android:name="arg_model_id"
+            app:argType="integer"
+            app:nullable="false" />
+    </fragment>
 
     <action
         android:id="@+id/to_addNoteFragment"
@@ -24,5 +36,20 @@
         app:exitAnim="@anim/exit"
         app:popEnterAnim="@anim/pop_enter"
         app:popExitAnim="@anim/pop_exit" />
+
+    <action
+        android:id="@+id/to_noteDetailFragment"
+        app:destination="@id/noteDetailFragment"
+        app:enterAnim="@anim/enter"
+        app:exitAnim="@anim/exit"
+        app:popEnterAnim="@anim/pop_enter"
+        app:popExitAnim="@anim/pop_exit" >
+
+        <argument
+            android:name="arg_model_id"
+            app:argType="integer"
+            app:nullable="false" />
+
+    </action>
 
 </navigation>

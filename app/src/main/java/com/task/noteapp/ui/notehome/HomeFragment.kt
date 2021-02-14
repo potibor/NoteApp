@@ -1,4 +1,4 @@
-package com.task.noteapp.ui.home
+package com.task.noteapp.ui.notehome
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,29 +10,30 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.task.noteapp.NavGraphDirections
 import com.task.noteapp.R
-import com.task.noteapp.databinding.FragmentHomeBinding
+import com.task.noteapp.data.model.NoteModel
+import com.task.noteapp.databinding.FragmentNoteHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), HomeClickListener {
 
     private lateinit var homeAdapter: HomeAdapter
 
     private val viewModel by viewModels<HomeViewModel>()
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentNoteHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_note_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentHomeBinding.bind(view)
+        binding = FragmentNoteHomeBinding.bind(view)
         binding.viewModel = viewModel
-        homeAdapter = HomeAdapter(viewModel)
+        homeAdapter = HomeAdapter(this)
         binding.adapter = homeAdapter
         viewModel.fetchNotes()
 
@@ -66,5 +67,9 @@ class HomeFragment : Fragment() {
                 ).show()
             }
         }
+    }
+
+    override fun noteItemClicked(model: NoteModel) {
+        findNavController().navigate(NavGraphDirections.toNoteDetailFragment(model.id))
     }
 }

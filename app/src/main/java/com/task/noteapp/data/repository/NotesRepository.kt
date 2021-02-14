@@ -27,5 +27,9 @@ class NotesRepository @Inject constructor(
         )
     }
 
+    suspend fun getNote(id: Int): NoteModel {
+        return localDataSource.get(id)
+    }
+
 
 }

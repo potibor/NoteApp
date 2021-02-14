@@ -3,4 +3,6 @@
     <string name="add_note_title">Title</string>
     <string name="add_note_description">Description</string>
     <string name="text_add">Add Note</string>
+    <string name="text_edit">Edit Note</string>
+    <string name="text_delete">Delete Note</string>
 </resources>

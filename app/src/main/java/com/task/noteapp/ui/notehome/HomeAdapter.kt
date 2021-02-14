@@ -1,4 +1,4 @@
-package com.task.noteapp.ui.home
+package com.task.noteapp.ui.notehome
 
 import com.task.noteapp.R
 import com.task.noteapp.base.BaseListAdapter

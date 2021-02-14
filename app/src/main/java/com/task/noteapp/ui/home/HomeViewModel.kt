@@ -15,25 +15,34 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val fetchNotesUseCase: FetchNotesUseCase
-) : ViewModel() {
+) : ViewModel(), HomeClickListener {
 
     val navigation = MutableLiveData<Event<Boolean>>()
 
+    val noteListLiveData = MutableLiveData<Event<List<NoteModel>>>()
+    val errorFailureLiveData = MutableLiveData<Event<Boolean>>()
+
+    fun fetchNotes() {
+        fetchNotesUseCase.invoke(viewModelScope, UseCase.None) {
+            it.either(::handleError, ::submitList)
+        }
+    }
+
     private fun handleError(failure: Failure) {
-        Log.d("failllll", failure.toString())
+        errorFailureLiveData.value = Event(true)
     }
 
     private fun submitList(noteList: List<NoteModel>) {
-        Log.d("successsssss", noteList.toString())
+        noteListLiveData.value = Event(mutableListOf<NoteModel>().apply {
+            addAll(noteList)
+        })
     }
 
     fun onAddButtonClick() {
         navigation.value = Event(true)
     }
 
-    fun fetchNotes() {
-        fetchNotesUseCase.invoke(viewModelScope, UseCase.None) {
-            it.either(::handleError, ::submitList)
-        }
+    override fun noteItemClicked(model: NoteModel) {
+        TODO("Not yet implemented")
     }
 }

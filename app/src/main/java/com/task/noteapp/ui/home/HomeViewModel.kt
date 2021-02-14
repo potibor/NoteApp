@@ -1,4 +1,4 @@
-package com.task.noteapp.ui
+package com.task.noteapp.ui.home
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

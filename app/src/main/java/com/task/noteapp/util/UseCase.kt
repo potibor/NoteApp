@@ -1,9 +1,7 @@
 package com.task.noteapp.util
 
 import com.task.noteapp.util.functional.Either
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 abstract class UseCase<out Type, in Params> where Type : Any {
 

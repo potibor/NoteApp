@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.task.noteapp.data.model.NoteModel
 import com.task.noteapp.domain.NoteDeleteUseCase
 import com.task.noteapp.domain.NoteDetailUseCase
+import com.task.noteapp.domain.NoteUpdateUseCase
 import com.task.noteapp.util.Event
 import com.task.noteapp.util.Failure
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,6 +17,7 @@ import javax.inject.Inject
 class NoteDetailViewModel @Inject constructor(
     private val noteDetailUseCase: NoteDetailUseCase,
     private val noteDeleteUseCase: NoteDeleteUseCase,
+    private val noteUpdateUseCase: NoteUpdateUseCase,
 ) : ViewModel() {
 
     val noteModel = MutableLiveData<NoteModel>()
@@ -28,7 +30,11 @@ class NoteDetailViewModel @Inject constructor(
     }
 
     fun editNote() {
-        // TODO: will be updated
+        noteModel.value?.let { NoteUpdateUseCase.Params(noteModel = it) }?.let { params ->
+            noteUpdateUseCase.invoke(viewModelScope, params) {
+                it.either(::handleFailure, ::navigateBack)
+            }
+        }
     }
 
     fun deleteNote() {

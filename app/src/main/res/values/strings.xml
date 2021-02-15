@@ -5,4 +5,6 @@
     <string name="text_add">Add Note</string>
     <string name="text_edit">Edit Note</string>
     <string name="text_delete">Delete Note</string>
+    <string name="update">Update</string>
+    <string name="text_edited">Edited</string>
 </resources>

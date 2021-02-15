@@ -33,6 +33,7 @@ class HomeFragment : Fragment(), HomeClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentNoteHomeBinding.bind(view)
         binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         homeAdapter = HomeAdapter(this)
         binding.adapter = homeAdapter
         viewModel.fetchNotes()

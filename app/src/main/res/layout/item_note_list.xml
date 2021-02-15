@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="model"
             type="com.task.noteapp.data.model.NoteModel" />
@@ -26,13 +28,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/purple_500"
-            android:padding="@dimen/margin_large">
+            android:background="@color/purple_500">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/item_image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
                 app:imageFromUrl="@{model.image}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +45,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_large"
+                android:paddingTop="@dimen/margin_large"
                 android:text="@{model.title}"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -68,12 +71,28 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_large"
+                android:paddingBottom="@dimen/margin_large"
                 android:text="@{model.createdDate}"
                 android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/item_is_updated"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/item_image"
                 app:layout_constraintTop_toBottomOf="@+id/item_description"
                 tools:text="Example" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/item_is_updated"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:paddingBottom="@dimen/margin_large"
+                android:text="@string/text_edited"
+                android:textColor="@color/white"
+                android:visibility="@{model.updated ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/item_image"
+                app:layout_constraintTop_toBottomOf="@+id/item_createdDate"
+                tools:text="Edited" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

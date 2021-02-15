@@ -4,9 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.task.noteapp.domain.AddNoteUseCase
-import com.task.noteapp.util.Event
-import com.task.noteapp.util.Failure
+import com.task.noteapp.testutil.Event
+import com.task.noteapp.testutil.Failure
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,17 +25,19 @@ class AddNoteViewModel @Inject constructor(
         if (title.value.isNullOrEmpty() && description.value.isNullOrEmpty()) {
             errorFailureLiveData.value = Event(true)
         } else {
-            addNotesUseCase.invoke(
-                viewModelScope,
-                AddNoteUseCase.Params(
-                    title = title.value,
-                    description = description.value,
-                    imageUrl = imageUrl.value
-                )
-            ) {
-                it.either(::handleFailure, ::navigateBack)
-            }
+            addNoteToDatabase()
+
         }
+    }
+
+    private fun addNoteToDatabase() = viewModelScope.launch {
+        addNotesUseCase.run(
+            AddNoteUseCase.Params(
+                title = title.value,
+                description = description.value,
+                imageUrl = imageUrl.value
+            )
+        ).either(::handleFailure, ::navigateBack)
     }
 
     private fun handleFailure(failure: Failure) {

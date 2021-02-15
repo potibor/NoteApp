@@ -1,4 +1,4 @@
-package com.task.noteapp.util.functional
+package com.task.noteapp.testutil.functional
 
 /**
  * Represents a value of one of two possible types (a disjoint union).

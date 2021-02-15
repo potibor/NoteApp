@@ -1,4 +1,4 @@
-package com.task.noteapp.util.databinding
+package com.task.noteapp.testutil.databinding
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter

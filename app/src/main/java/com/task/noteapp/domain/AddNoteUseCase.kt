@@ -1,7 +1,7 @@
 package com.task.noteapp.domain
 
 import com.task.noteapp.data.repository.NotesRepository
-import com.task.noteapp.util.UseCase
+import com.task.noteapp.testutil.UseCase
 import javax.inject.Inject
 
 class AddNoteUseCase @Inject constructor(

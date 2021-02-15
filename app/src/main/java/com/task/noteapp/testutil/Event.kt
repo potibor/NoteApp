@@ -1,4 +1,4 @@
-package com.task.noteapp.util
+package com.task.noteapp.testutil
 
 open class Event<out T>(private val content: T) {
 

@@ -1,40 +1,29 @@
 # NoteApp
 
-### Deadline
+## Architecture
 
-We'll be waiting for your solution within 4 days.
+- Single Activity
+- MVVM Pattern
 
-### Goal ###
+**View:** Renders UI and delegates user actions to ViewModel
 
-Develop a simple note app that allows the user to save/edit/delete any kind of note and display them in a list.
+**ViewModel:** Can have simple UI logic but most of the time just gets the data from UseCase
 
-### Functional Requirements ###
+**UseCase:** Contains all business rules and they written in the manner of single responsibility principle
 
-* Kotlin is preferred but not a must.
-* Users must be able to create notes with input fields such as title, description, image url (input can be optional) and store it locally on their phones.
-* Created note must contain a created date.
-* There must be a way to display all saved notes in the list. An item on the list must contain the created date (dd/mm/yyyy), the image if url is available, title and max. 2 lines of description.
-* There must be a way to edit/delete previously created notes. But edited notes must contain an (edited) tag somewhere while being displayed on the list.
-* All data should be persisted locally.
+**Repository:** Single source of data. Responsible to get data from one or more data sources
 
-### UI Suggestions ###
+<img width="677" alt="architecture-diagram" src="https://user-images.githubusercontent.com/26321700/107923530-b0593500-6f82-11eb-99bb-312e149f1757.png">
 
-It doesn't need to be super pretty, but it shouldn't be broken as well. The design is mostly up to you as long as creating, listing and editing/deleting features are available to use.
+## Tech Stack
 
-Nice to have:
-* Animations/Transitions
-* At least one custom view
+#### Dependencies
 
-### Expectations ###
-
-Consider this as a showcase of your skills.
-Approach it as if you are going to make a pull request on our main/master branch.
-
-We are expecting at least:
-* Clear, defined architecture.
-* Apply the Material Design Guidelines as much as possible.
-* Meaningful tests (You do not need to have 100% coverage, but we will be looking for tests).
-* Good and lint verified syntax.
-* The repo should not contain any references to Getir in it.
-* The code must compile.
-* The code must be production ready. Unit tests are expected.
+- **[Navigation Component](https://developer.android.com/jetpack/androidx/releases/navigation):** Consistent navigation between views
+- **[LiveData](https://developer.android.com/topic/libraries/architecture/livedata):** Lifecycle aware observable and data holder
+- **[ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel):** Holds UI data across configuration changes
+- **[Databinding](https://developer.android.com/topic/libraries/data-binding/):** Binds UI components in layouts to data sources
+- **[Coroutines](https://github.com/Kotlin/kotlinx.coroutines):** Asynchronous programming
+- **[Glide](https://github.com/bumptech/glide):** Image loading and caching
+- **[Room](https://developer.android.com/topic/libraries/architecture/room):** Object mapping for SQLite
+- **[Hilt](https://github.com/googlecodelabs/android-hilt):** Dependency injector

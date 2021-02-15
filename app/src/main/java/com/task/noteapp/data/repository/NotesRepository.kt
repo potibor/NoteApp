@@ -35,5 +35,9 @@ class NotesRepository @Inject constructor(
         return localDataSource.remove(note = noteModel)
     }
 
+    suspend fun update(noteModel: NoteModel) {
+        return localDataSource.update(note = noteModel)
+    }
+
 
 }

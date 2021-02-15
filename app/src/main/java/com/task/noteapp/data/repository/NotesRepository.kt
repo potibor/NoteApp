@@ -39,5 +39,4 @@ class NotesRepository @Inject constructor(
         return localDataSource.update(note = noteModel)
     }
 
-
 }

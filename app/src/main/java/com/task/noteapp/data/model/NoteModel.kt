@@ -1,7 +1,7 @@
 package com.task.noteapp.data.model
 
 import com.task.noteapp.base.ListAdapterItem
-import com.task.noteapp.util.functional.now
+import com.task.noteapp.testutil.functional.now
 import java.io.Serializable
 import java.util.*
 

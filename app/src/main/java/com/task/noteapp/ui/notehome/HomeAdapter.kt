@@ -4,7 +4,6 @@ import com.task.noteapp.R
 import com.task.noteapp.base.BaseListAdapter
 import com.task.noteapp.data.model.NoteModel
 import com.task.noteapp.databinding.ItemNoteListBinding
-import com.task.noteapp.util.databinding.loadImage
 
 class HomeAdapter(
     private val listener: HomeClickListener

@@ -1,4 +1,4 @@
-package com.task.noteapp.util.functional
+package com.task.noteapp.testutil.functional
 
 import java.text.SimpleDateFormat
 import java.util.*
